@@ -22,30 +22,34 @@ function setup(){
     box4 = createSprite(605,600,130,20);
     box4.shapeColor = "brown";
     //create box sprite and give velocity
-     b = createSprite(random(20,750));
+     b = createSprite(random(20,750),100,40,40);
+     b.shapeColor = "white";
+     b.velocityX = 4;
+     b.velocityY = 5;
 }
 
 function draw() {
     background(rgb(169,169,169));
     //create edgeSprite
-   box1.display();
-   box2.display();
-   box3.display();
-   box4.display();
-   b.display();
-drawSprite();
+  edges = createEdgeSprites();
+  b.bounceOff (edges);
     //add condition to check if box touching surface and make it box
-    if(box1.isTouching(b) && b.bounceoff(box1)){
-        b.shapeColor = "pink";
+    if(box1.isTouching(b) && b.bounceOff(box1)){
+        b.shapeColor = "red";
     }
-    if(box2.isTouching(b) && b.bounceoff(box2)){
-        b.shapeColor = "white";
-    }
+    if(box2.isTouching(b) && b.bounceOff(box2)){
+        b.shapeColor = "blue";
+        music.play();
+        }
 
-    if(box3.isTouching(b) && b.bounceoff(box3)){
-        b.shapeColor = "skyBlue";
+    if(box3.isTouching(b) && b.bounceOff(box3)){
+        b.shapeColor = "green";
     }
-    if(box4.isTouching(b) && b.bounceoff(box4)){
-        b.shapeColor = "yellow";
+    if(box4.isTouching(b) && b.bounceOff(box4)){
+        b.shapeColor = "brown";
+        music.stop();
+        b.velocityX = 0;
+        b.velocityY = 0;
     }
+    drawSprites();
 }
