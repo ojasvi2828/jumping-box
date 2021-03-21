@@ -1,7 +1,7 @@
 var canvas;
 var music;
 var box1,box2,box3,box4;
-
+var b;
 
 
 function preload(){
